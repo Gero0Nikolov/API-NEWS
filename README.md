@@ -20,7 +20,7 @@ Is a class that can simplify your work to create your custom blog page or a news
       <li>$db_user - The Database user.</li>
       <li>$db_pass - The password of the Database user.</li>
       <li>$stories_table - The table which to be created / used for the stories.
-        <ul>Structure of the table stories:
+        <ul>Structure of the stories table:
           	<div>id int NOT NULL AUTO_INCREMENT,</div>
 		<div>story_title LONGTEXT,</div>
 		<div>story_publish_date DATE,</div>
