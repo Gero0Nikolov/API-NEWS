@@ -12,7 +12,25 @@ Is a class that can simplify your work to create your custom blog page or a news
       <li>$stories_table: The table where we are going to store the stories. By default it is "ra_news_stories".</li>
     </ul>
   </li>
-  <li>Once you've set the Database & the DB variables you are ready to call the RA_NEWS class. Example: <i>$news_demo = new RA_NEWS( true, $server_name, $db_name, $db_user, $db_pass );</i></li>
+  <li>Once you've set the Database & the DB variables you are ready to call the RA_NEWS class. Example: <i>$news_demo = new RA_NEWS( true, $server_name, $db_name, $db_user, $db_pass );</i>
+    <ul>The class takes 6 arguments:
+      <li>$debug - By default it is set to false but if it's true the class will return the errors if any occurs.</li>
+      <li>$server_name - The name of the HOST SERVER.</li>
+      <li>$db_name - The name of the Database.</li>
+      <li>$db_user - The Database user.</li>
+      <li>$db_pass - The password of the Database user.</li>
+      <li>$stories_table - The table which to be created / used for the stories.
+        <ul>Structure of the table stories:
+          <p>id int NOT NULL AUTO_INCREMENT,</p>
+					<p>story_title LONGTEXT,</p>
+					<p>story_publish_date DATE,</p>
+					<p>story_text LONGTEXT,</p>
+					<p>PRIMARY KEY (id)</p>
+					</p>
+        </ul>
+      </li>
+    </ul>
+  </li>
   <li>Now you are ready to play around with the class methods.
     <ul>The methods are:
       <li>initialize_db() - Is used to create the table for the news in the database if we already don't have it.</li>
