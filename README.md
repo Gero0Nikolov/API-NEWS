@@ -18,9 +18,11 @@ Is a class that can simplify your work to create your custom blog page or a news
     <ul>The methods are:
       <li>initialize_db() - Is used to create the table for the news in the database if we already don't have it.</li>
       <li>add_story( $title_, $content_, $date_ = "" ) - Is used to create a new story in the News table. A specific $title_, $content_ & $date_ can be provided as arguments.</li>
-      <li>edit_story( $id, $title_ = "", $content_ = "", $date_ = "" ) - Is used to edit a story that already exists in the DB. The ID selector of the specific story can be provided by the $id var and the new title, content & date can be provided by $title_, $content_ & $date_. Note: If their are empty the specific field won't be updated in the DB.</li>
+      <li>edit_story( $id, $title_ = "", $content_ = "", $date_ = "" ) - Is used to edit a story that already exists in the DB. The ID selector of the specific story can be provided by the $id var and the new title, content & date can be provided by $title_, $content_ & $date_. Note: If they are empty the specific field won't be updated in the DB.</li>
       <li>delete_story( $id ) - Is used to delete a story from the DB. The ID selector of the specific story can be provided by the $id var.</li>
       <li>get_story( $id ) - Is used to return story from the DB. The ID selector of the specific story can be provided by the $id var. Ther returned result is in JSON object.</li>
     </ul>
   </li>
 </ol>
+
+<h4>Live demo can be found <a href='http://dopamine.blogy.co' target='_blank'>here</a>.</h4>
