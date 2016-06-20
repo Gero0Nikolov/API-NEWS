@@ -21,12 +21,11 @@ Is a class that can simplify your work to create your custom blog page or a news
       <li>$db_pass - The password of the Database user.</li>
       <li>$stories_table - The table which to be created / used for the stories.
         <ul>Structure of the table stories:
-          <p>id int NOT NULL AUTO_INCREMENT,</p>
-					<p>story_title LONGTEXT,</p>
-					<p>story_publish_date DATE,</p>
-					<p>story_text LONGTEXT,</p>
-					<p>PRIMARY KEY (id)</p>
-					</p>
+          	<div>id int NOT NULL AUTO_INCREMENT,</div>
+		<div>story_title LONGTEXT,</div>
+		<div>story_publish_date DATE,</div>
+		<div>story_text LONGTEXT,</div>
+		<div>PRIMARY KEY (id)</div>
         </ul>
       </li>
     </ul>
