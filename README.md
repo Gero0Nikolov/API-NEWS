@@ -1,7 +1,6 @@
 # REST-API-NEWS
 Is a class that can simplify your work to create your custom blog page or a news website.
-<br>
-<strong>How it works?</strong>
+<h4>How it works?</h4>
 <ol>
   <li>Include the class in your PHP script. Example: <i>include "ra-news-class.php";</i></li>
   <li>Make sure that you have properly created a database or atleast you have existing one.
