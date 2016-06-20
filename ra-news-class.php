@@ -35,7 +35,19 @@
 			$GLOBALS[ "stories_table" ] = $stories_table;
 		}
 
-        function __desctruct() {} // Destructor
+		/*
+		* 	__destruct function.
+		*  	Purpose:
+		*  	- Unsets the $GLOBALS variables used in the RA_NEWS class.
+		 */
+        function __destruct() {
+        	unset( $GLOBALS[ "debug_" ] );
+        	unset( $GLOBALS[ "server_name" ] );
+        	unset( $GLOBALS[ "db_name" ] );
+        	unset( $GLOBALS[ "db_user" ] );
+        	unset( $GLOBALS[ "db_pass" ] );
+        	unset( $GLOBALS[ "stories_table" ] );
+        }
       
       	/*
       	* 	Connect to database function.
@@ -223,12 +235,11 @@
       		$stories_table = $GLOBALS[ "stories_table" ];
       		$id = $this->sanitize_string( $id );
 
-      		$story_obj = array();
-
       		$sql_ = "SELECT story_title, story_publish_date, story_text FROM $stories_table WHERE id=$id";
       		$catch_ = $connection_->query( $sql_ );
       		if ( isset( $catch_->num_rows ) > 0 ) {
       			while ( $row_ = $catch_->fetch_assoc() ) {
+      				$story_obj = array();
       				$story_obj[ "story_title" ] = $row_[ "story_title" ];
       				$story_obj[ "story_date" ] = $row_[ "story_publish_date" ];
       				$story_obj[ "story_content" ] = nl2br( $row_[ "story_text" ] );
