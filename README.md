@@ -1,4 +1,4 @@
-# REST-API-NEWS
+# PHP API FOR NEWS
 Is a class that can simplify your work to create your custom blog page or a news website.
 <h4>How it works?</h4>
 <ol>
