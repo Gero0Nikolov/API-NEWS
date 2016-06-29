@@ -27,12 +27,12 @@
 			$db_user, 
 			$db_pass,
 			$stories_table = "ra_news_stories" ) { 
-			$GLOBALS[ "debug_" ] = $debug;
-			$GLOBALS[ "server_name" ] = $server_name;
-			$GLOBALS[ "db_name" ] = $db_name;
-			$GLOBALS[ "db_user" ] = $db_user;
-			$GLOBALS[ "db_pass" ] = $db_pass;
-			$GLOBALS[ "stories_table" ] = $stories_table;
+			$this->debug_ = $debug;
+			$this->server_name = $server_name;
+			$this->db_name = $db_name;
+			$this->db_user = $db_user;
+			$this->db_pass = $db_pass;
+			$this->stories_table = $stories_table;
 		}
 
 		/*
@@ -41,12 +41,12 @@
 		*  	- Unsets the $GLOBALS variables used in the RA_NEWS class.
 		 */
         function __destruct() {
-        	unset( $GLOBALS[ "debug_" ] );
-        	unset( $GLOBALS[ "server_name" ] );
-        	unset( $GLOBALS[ "db_name" ] );
-        	unset( $GLOBALS[ "db_user" ] );
-        	unset( $GLOBALS[ "db_pass" ] );
-        	unset( $GLOBALS[ "stories_table" ] );
+        	unset( $this->debug_ );
+        	unset( $this->server_name );
+        	unset( $this->db_name );
+        	unset( $this->db_user );
+        	unset( $this->db_pass );
+        	unset( $this->stories_table );
         }
       
       	/*
@@ -56,10 +56,10 @@
       	 */
       	function connect_to_database() {
       		// Set database variables
-      		$server_name = $GLOBALS[ "server_name" ];
-      		$db_user = $GLOBALS[ "db_user" ];
-      		$db_pass = $GLOBALS[ "db_pass" ];
-      		$db_name = $GLOBALS[ "db_name" ];
+      		$server_name = $this->server_name;
+      		$db_user = $this->db_user;
+      		$db_pass = $this->db_pass;
+      		$db_name = $this->db_name;
 
       		// Connect to the database
       		$connection_ = mysqli_connect( $server_name, $db_user, $db_pass, $db_name );
@@ -78,7 +78,7 @@
       		// Connect to the database
       		$connection_ = $this->connect_to_database();
 
-      		$stories_table = $GLOBALS[ "stories_table" ];
+      		$stories_table = $this->stories_table;
 
       		// Build the stories table
       		$sql_ = "SELECT id FROM $stories_table LIMIT 1";
@@ -95,7 +95,7 @@
 				)
 	       		";
 	       		if ( $connection_->query( $sql_ ) === FALSE ) {
-					if ( $GLOBALS[ "debug_" ] == true ) { echo "<h4>Table: <i>$stories_table</i> wasn't created.<br>Reason: $connection_->error</h4>"; }
+					if ( $this->debug_ == true ) { echo "<h4>Table: <i>$stories_table</i> wasn't created.<br>Reason: $connection_->error</h4>"; }
 				}
 	        }
 
@@ -134,12 +134,12 @@
       		// Connect to the database
       		$connection_ = $this->connect_to_database();
 
-      		$stories_table = $GLOBALS[ "stories_table" ];
+      		$stories_table = $this->stories_table;
 
       		// Add the new user into the Authors table
       		$sql_ = "INSERT INTO $stories_table (story_title, story_publish_date, story_text) VALUES ('$title_', '$date_', '$content_')";
       		if ( $connection_->query( $sql_ ) === FALSE ) {
-      			if ( $GLOBALS[ "debug_" ] == true ) { echo "<h4>Couldn't add a story to: <i>$stories_table</i>.<br>Reason: $connection_->error</h4>"; }
+      			if ( $this->debug_ == true ) { echo "<h4>Couldn't add a story to: <i>$stories_table</i>.<br>Reason: $connection_->error</h4>"; }
       		}
 
       		// Close the connection
@@ -160,7 +160,7 @@
       		// Connect to the database
       		$connection_ = $this->connect_to_database();
 
-      		$stories_table = $GLOBALS[ "stories_table" ];
+      		$stories_table = $this->stories_table;
       		$id = $this->sanitize_string( $id );
 
       		// Update story title
@@ -186,7 +186,7 @@
       			if ( $connection_->query( $sql_ ) === FALSE ) { $date_update = $connection_->error; }
       		}
 
-      		if ( $GLOBALS[ "debug_" ] == true ) {
+      		if ( $this->debug_ == true ) {
       			if ( !empty( $title_update ) ) { echo "<h4>Story title wasn't updated. Reason: $title_update</h4>"; }
       			if ( !empty( $content_update ) ) { echo "<h4>Story text wasn't updated. Reason: $content_update</h4>"; }
       			if ( !empty( $date_update ) ) { echo "<h4>Story date wasn't updated. Reason: $date_update</h4>"; }
@@ -212,7 +212,7 @@
 
       		$sql_ = "DELETE FROM $stories_table WHERE id=$id";
       		if ( $connection_->query( $sql_ ) === FALSE ) {
-      			if ( $GLOBALS[ "debug_" ] == true ) {
+      			if ( $this->debug_ == true ) {
       				echo "<h4>Story wasn't deleted. Reason: $connection_->error</h4>";
       			}
       		}
@@ -248,7 +248,7 @@
       				$story_obj = json_encode( $story_obj );
       			}
       		} else {
-      			if ( $GLOBALS[ "debug_" ] == true ) {
+      			if ( $this->debug_ == true ) {
       				echo "<h4>Story wasn't found.</h4>";
       			}
       		}

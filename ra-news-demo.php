@@ -11,15 +11,16 @@
 	$db_name = "dopamine_ra_news";
 	$db_user = "root";
 	$db_pass = "";
+	$stories_table = "third_stories";
 
 	// Call the class
-	$ra_news_ = new RA_NEWS( true, $server_name, $db_name, $db_user, $db_pass );
+	$ra_news_ = new RA_NEWS( true, $server_name, $db_name, $db_user, $db_pass, $stories_table );
 
 	// Initialize the database
 	$ra_news_->initialize_db();
 
 	// Add new story
-	$title = "My first post with RA_NEWS API";
+	$title = "Another table";
 	$content = "Lorem Ipsum dolor grandum spark...";
 	$ra_news_->add_story( $title, $content );
 
@@ -33,10 +34,6 @@
 	$title = "Story 2";
 	$content = "Was UPDATED!";
 	$ra_news_->edit_story( $id, $title, $content );
-
-	// Delete story
-	$id = 2;
-	$ra_news_->delete_story( $id );
 
 	// Get story
 	$id = 1;
